@@ -1,0 +1,40 @@
+.FONT_COM {
+	font-famliy: Microsoft YaHei
+}
+
+.FONT_BLK {
+	font-size: xx-large;
+	font-famliy: Consolas
+}
+
+.FONT_GRN {
+	color: green;
+	font-size: x-large;
+	font-weight: bold;
+	font-famliy: Verdana
+}
+
+.FONT_RED {
+	color: red;
+	font-size: xx-large;
+	font-weight: bold;
+	font-famliy: Consolas
+}
+
+.INPUT_TXT {
+	font-size: small;
+	font-famliy: '微软雅黑';
+	width: 25%;
+	text-align: right;
+	padding: 5px;
+	width: 25%;
+}
+
+.INPUT_BOX {
+	font-size: small;
+	font-famliy: '微软雅黑';
+	width: 25%;
+	text-align: left;
+	padding: 5px;
+	width: 25%;
+}

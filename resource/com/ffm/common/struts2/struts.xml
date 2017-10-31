@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.objectFactory" value="spring"/>
+	<package name="defaultPackage" namespace="/" extends="struts-default">
+		<default-action-ref name="index"/>
+		<action name="index" class="com.ffm.common.action.LoginAction">
+			<result name="success" type="chain">
+				<param name="namespace">/sys</param>
+				<param name="actionName">main</param>
+			</result>
+			<result name="error">/login/Login.jsp</result>
+		</action>
+	</package>
+	<package name="ffm-default" extends="struts-default">
+		<interceptors>
+			<interceptor name="authority" class="com.ffm.common.intercepter.AuthorityInterceptor"/>
+			<interceptor-stack name="ffmdefault">
+				<interceptor-ref name="authority"/>
+				<interceptor-ref name="defaultStack"/>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="ffmdefault"/>
+		<global-results>
+			<result name="login" type="redirect">/login/Login.jsp</result>
+		</global-results>
+	</package>
+	<package name="login" extends="struts-default" namespace="/login">
+		<!-- 
+		<action name="login" class="sysUserAction" method="login">
+			<result name="success">/main/main.jsp</result>
+			<result name="error" type="redirect">/login/Login.jsp</result>
+			<result name="successMobile" type="chain">
+				<param name="namespace">/sys</param>
+				<param name="actionName">main</param>
+			</result>
+			<result name="errorMobile" type="redirect">/login/LoginMobile.jsp</result>
+		</action>
+		 -->
+		<action name="login" class="sysUserAction" method="login"/>
+		<action name="register" class="sysUserAction" method="register">
+			<result name="success" type="chain">
+				<param name="namespace">/sys</param>
+				<param name="actionName">main</param>
+			</result>
+			<result name="error" type="redirect">/login/Register.jsp</result>
+			<result name="successMobile" type="redirect">
+				<param name="namespace">/sys</param>
+				<param name="actionName">main</param>
+			</result>
+			<result name="errorMobile" type="redirect">/login/RegisterMobile.jsp</result>
+		</action>
+		<action name="wetchatAction" class="wechatAction" method="receiveInfo"/>
+	</package>
+	<package name="sys" extends="ffm-default,json-default" namespace="/sys">
+		<default-interceptor-ref name="ffmdefault"/>
+		<action name="main" class="com.ffm.sys.action.MenuTreeAction" method="panelInfo">
+			<result name="success">/main/main.jsp</result>
+			<result name="successMobile">/main/mainMobile.jsp</result>
+		</action>
+		<action name="logout" class="com.ffm.sys.action.SysUserAction" method="logout"/>
+		<action name="menusList" class="menuTreeAction" method="menusList"/>
+		<action name="menus" class="menuTreeAction" method="showMenuList"/>
+		<action name="sysMenu" class="menuTreeAction" method="sysMenu"/>
+		<action name="dictQuery" class="com.ffm.sys.action.CommAction" method="dictQuery"/>
+		<action name="dictQueryPID" class="com.ffm.sys.action.CommAction" method="dictQueryByPID"/>
+		<action name="querySysTask" class="sysTaskAction" method="querySysTask"/>
+		<action name="saveSysTask" class="sysTaskAction" method="saveSysTask">
+			<result name="success">/sys/taskmng.jsp</result>
+			<result name="error">/sys/taskmng.jsp</result>
+		</action>
+		<action name="runTask" class="sysTaskAction" method="runTask">
+			<result name="success">/sys/taskmng.jsp</result>
+			<result name="error">/sys/taskmng.jsp</result>
+		</action>
+		<action name="menuPermission" class="menuTreeAction" method="menuPermission">
+			<result name="success">/sys/permissionmng.jsp</result>
+			<result name="error">/sys/permissionmng.jsp</result>
+		</action>
+	</package>
+	<package name="stock" extends="ffm-default,json-default" namespace="/stock">
+		<action name="stocklist" class="stockAction" method="listStockInfo"/>
+		<action name="queryStockName" class="stockAction" method="findStockName"/>
+		<action name="queryTodayStock" class="stockAction" method="queryTodayStock"/>
+		<action name="queryTodayStockDetail" class="stockAction" method="queryTodayStockDetail"/>
+		<action name="queryStockHistory" class="stockAction" method="queryStockHistory"/>
+	</package>
+	<package name="currency" extends="ffm-default" namespace="/currency">
+		<action name="currencyinfo" class="com.ffm.currency.action.CurrencyAction" method="queryInfo"/>
+	</package>
+	<package name="account" extends="ffm-default" namespace="/account">
+		<action name="accountInfo" class="accountManagerAction" method="accountInfo"/>
+		<action name="accountChk" class="accountManagerAction" method="accountChk"/>
+		<action name="saveAccountInfo" class="accountManagerAction" method="saveAccountInfo">
+			<result name="success">/account/AccountManager.jsp</result>
+			<result name="error">/account/AccountManager.jsp</result>
+		</action>
+		<action name="daybookList" class="daybookAction" method="daybookList"/>
+		<action name="saveDaybook" class="daybookAction" method="saveDaybook">
+			<result name="success" type="redirect">/account/Daybook.jsp</result>
+			<result name="error" type="redirect">/account/Daybook.jsp</result>
+		</action>
+		<action name="modifyDaybook" class="daybookAction" method="modifyDaybook">
+			<result name="success">/account/Daybook.jsp</result>
+			<result name="error" type="redirect">/account/Daybook.jsp</result>
+		</action>
+		<action name="deleteDaybook" class="daybookAction" method="deleteDaybook">
+			<result name="success">/account/Daybook.jsp</result>
+			<result name="error" type="redirect">/account/Daybook.jsp</result>
+		</action>
+		<action name="daybookReportingMonth" class="daybookAction" method="daybookReportingMonth"/>
+		<action name="monthlyFinancialDetail" class="daybookAction" method="userMonthlyFinancialDetail"/>
+		<action name="monthlyReporting" class="daybookAction" method="makeMonthlyBarChart"/>
+		<action name="stockAssetPage" class="com.ffm.account.action.StockAssetAction" method="userStockAsset">
+			<result name="success">/account/StockAsset.jsp</result>
+			<result name="error">/Account/StockAsset.jsp</result>
+		</action>
+		<action name="userstock" class="stockAssetAction" method="stockAssetList"/>
+		<action name="saveUserStock" class="stockAssetAction" method="saveBalanceDetail">
+			<result name="success">/account/StockAsset.jsp</result>
+			<result name="error" type="redirect">/account/StockAsset.jsp</result>
+		</action>
+		<action name="removeUserStock" class="stockAssetAction" method="removeBalanceDetail">
+			<result name="success">/account/StockAsset.jsp</result>
+			<result name="error" type="redirect">/account/StockAsset.jsp</result>
+		</action>
+	</package>
+	<package name="websocket" extends="ffm-default" namespace="/websocket">
+		<action name="websocket" class="websocket.xml"></action>
+	</package>
+</struts>

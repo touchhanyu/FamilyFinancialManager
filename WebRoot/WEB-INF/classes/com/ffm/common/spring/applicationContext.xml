@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+        xmlns:tx="http://www.springframework.org/schema/tx"
+        xmlns:aop="http://www.springframework.org/schema/aop"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+			                http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+			                http://www.springframework.org/schema/tx 
+			                http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+			                http://www.springframework.org/schema/aop 
+			                http://www.springframework.org/schema/aop/spring-aop-3.2.xsd ">
+
+	<!-- 配置连接参数 -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:com/ffm/common/jdbc.properties"/>
+	</bean>
+	<!-- 配置数据源 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<!-- 基本配置 -->
+		<property name="jdbcUrl" value="${url}"/>
+		<property name="driverClass" value="${driver}"/>
+		<property name="user" value="${username}"/>
+		<property name="password" value="${password}"/>
+		<!-- 额外配置 -->
+		<property name="acquireIncrement" value="3"/>
+		<property name="initialPoolSize" value="3"/>
+		<property name="minPoolSize" value="3"/>
+		<property name="maxPoolSize" value="15"/>
+		<property name="maxIdleTime" value="500"/>
+	</bean>
+	<!-- springJDBC工具类 -->
+	<bean name="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<bean name="jdbcutil" class="com.ffm.common.db.JDBCUtil">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<!-- Spring AOP -->
+	<bean name="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="query*" propagation="SUPPORTS" read-only="true"/>
+			<tx:method name="*" propagation="REQUIRED"/>
+		</tx:attributes>
+	</tx:advice>
+	<aop:config proxy-target-class="true">
+		<aop:pointcut id="accpc" expression="execution(* com.ffm.account.action.*.*(..))"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="accpc"/>
+	</aop:config>
+	<!-- DAO -->
+	<!-- service -->
+	<bean name="wechatMsgService" class="com.ffm.wechat.service.impl.WechatMsgServiceImpl"></bean>
+	<!-- action -->
+	<bean name="wechatAction" class="com.ffm.wechat.action.WetchatAction" scope="prototype">
+		<property name="service" ref="wechatMsgService"/>
+	</bean>
+	<!-- 导入各模块配置文件 -->
+	<import resource="classpath:com/ffm/sys/spring/sys.xml"/>
+	<import resource="classpath:com/ffm/stock/spring/stock.xml"/>
+	<import resource="classpath:com/ffm/account/spring/account.xml"/>
+</beans>
