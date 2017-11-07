@@ -81,7 +81,6 @@ public abstract class ExcelUtil {
 				int cellType = cell.getCellType();
 				switch (cellType) {
 				case Cell.CELL_TYPE_NUMERIC:
-					
 					break;
 				case Cell.CELL_TYPE_STRING:
 					break;
