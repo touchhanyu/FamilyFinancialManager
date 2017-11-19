@@ -40,7 +40,7 @@ function login() {
 //	});
 	$.post(url, param, function(data) {
 		if (data.res == 'succ') {
-			$('#loginsucc').slideToggle('normal');
+			//$('#loginsucc').slideToggle('normal');
 			window.location.href = basePath;
 		}
 	}, 'json');
