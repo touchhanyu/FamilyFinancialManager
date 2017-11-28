@@ -11,6 +11,8 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/js/adminlte/jvectormap/jquery-jvectormap.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/js/adminlte/bootstrap-daterangepicker/daterangepicker.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/js/adminlte/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/js/adminlte/datatables.net-bs/css/dataTables.bootstrap.min.css">
+<link rel="syltesheet" href="${pageContext.request.contextPath}/js/adminlte/iCheck/flat/blue.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/adminlte/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/adminlte/jquery-ui.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/adminlte/bootstrap/js/bootstrap.min.js"></script>
@@ -20,6 +22,9 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/adminlte/moment/moment.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/adminlte/bootstrap-daterangepicker/daterangepicker.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/adminlte/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/adminlte/datatables.net/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/adminlte/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/adminlte/iCheck/icheck.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/adminlte/common.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/main/main.js"></script>
 <script type="text/javascript">
@@ -172,7 +177,7 @@
 				<div class="col-md-12">
 					<div class="nav-tabs-custom">
 						<ul id="tabsnav" class="nav nav-tabs">
-							<li class="active"><a href="#homepage" data-toggle="tab">主页</a></li>
+							<li class="active"><a href="#homepage" data-toggle="tab">主页 <i class="fa fa-times"></i></a></li>
 						</ul>
 						<div id="tabcontext" class="tab-content">
 							<div class="active tab-pane" id="homepage">
@@ -188,19 +193,24 @@
 								<hr>
 								<section class="content">
 									<div class="row">
+										<!-- 动态行 -->
+										<!-- <div class="col-xs-12">
+											<div class="box">
+												<div class="box-header">
+													<h3 class="box-title">JQuery DataTable</h3>
+												</div>
+												<div class="box-body">
+													<table id="datatable" class="table table-striped table-bordered"></table>
+												</div>
+											</div>
+										</div> -->
 										<section class="col-lg-7 connectedSortable">
-											<div class="box box-primary">	
+											<div class="box box-primary">
 												<div class="box-header">
 													<i class="ion ion-clipboard"></i>
 													<h3 class="box-title">待办任务</h3>
-													<div class="box-tools pull-right">	
-														<ul class="pagination pagination-sm inline">
-															<li><a href="#">&laquo;</a></li>
-															<li><a href="#">1</a></li>
-															<li><a href="#">2</a></li>
-															<li><a href="#">3</a></li>
-															<li><a href="#">&raquo;</a></li>
-														</ul>
+													<div class="box-tools pull-right">
+														<button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
 													</div>
 												</div>
 												<div class="box-body">
@@ -286,7 +296,13 @@
 													</ul>
 												</div>
 												<div class="box-footer clearfix no-border">
-													<button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
+													<ul class="pagination pagination-sm inline">
+														<li><a href="#">&laquo;</a></li>
+														<li><a href="#">1</a></li>
+														<li><a href="#">2</a></li>
+														<li><a href="#">3</a></li>
+														<li><a href="#">&raquo;</a></li>
+													</ul>
 												</div>
 											</div>
 										</section>
@@ -373,69 +389,7 @@
 					</div>
 				</div>
 			</div>
-		<!-- 
-		<div class="content-wrapper">
-			<div class="row">
-				<div class="col-md-9">
-					<div class="nav-tabs-custom">
-						<ul class="nav nav-tabs">
-							<li class="active"><a href="#activity" data-toggle="tab">Activity</a></li>
-							<li><a href="#timeline" data-toggle="tab">Timeline</a></li>
-						</ul>
-						<div class="tab-content">
-							<div class="active tab-pane" id="activity">
-								<section id="content-header" class="content-header"></section>
-								<hr>
-								<section class="content">
-									
-								</section>
-							</div>
-							<div class="active tab-pane" id="timeline">
-								<section id="content-header" class="content-header"></section>
-								<hr>
-								<section class="content">
-									<form class="form-horizontal">
-										<div class="form-group">
-											<label for="inputName" class="col-sm-2 control-label">Name</label>
-											<div class="col-sm-10">
-												<input type="email" class="form-control" id="inputName" placeholder="Name">
-											</div>
-										</div>
-										<div class="form-group">
-											<label for="inputName" class="col-sm-2 control-label">Name</label>
-											<div class="col-sm-10">
-												<input type="text" class="form-control" id="inputName" placeholder="Name">
-											</div>
-										</div>
-										<div class="form-group">
-											<label for="inputExperience" class="col-sm-2 control-label">Experience</label>
-											<div class="col-sm-10">
-												<textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
-											</div>
-										</div>
-										<div class="form-group">
-											<div class="col-sm-offset-2 col-sm-10">
-												<div class="checkbox">
-													<label>
-														<input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-													</label>
-												</div>
-											</div>
-										</div>
-										<div class="form-group">
-											<div class="col-sm-offset-2 col-sm-10">
-												<button type="submit" class="btn btn-danger">Submit</button>
-											</div>
-										</div>
-									</form>
-								</section>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
-		 -->
 	</div>
 </body>
 </html>
