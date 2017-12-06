@@ -1,5 +1,7 @@
 $(function() {
-	$('#calendar').datepicker();
+	$('#calendar').datepicker({
+		language: 'zh-CN'
+	});
 	$('.daterange').daterangepicker({
 		ranges : {
 			'Today' : [ moment(), moment() ],
@@ -122,34 +124,33 @@ $(function() {
 			dataSrc : 'rows'
 		},
 		initComplete : function() {
-			/* 复选框 */
-			$('table input[type="checkbox"]').iCheck({
-				checkboxClass : 'icheckbox_flat-blue',
-				radioClass : 'iradio_flat-blue'
-			});
-			$(".checkbox-toggle").click(function() {
-				var clicks = $(this).data('clicks');
-				if (clicks) {
-					$(".table input[type='checkbox']").iCheck("uncheck");
-					$(".fa", this).removeClass("fa-check-square-o").addClass('fa-square-o');
-				} else {
-					$(".table input[type='checkbox']").iCheck("check");
-					$(".fa", this).removeClass("fa-square-o").addClass('fa-check-square-o');
-				}
-			});
 		}
+	});
+	$('.todo-list input[type="checkbox"]').iCheck({
+		checkboxClass : 'icheckbox_flat-blue',
+		radioClass : 'iradio_flat-blue'
 	});
 })
 function searchMenu() {
 }
 function openTabs(id, text, href) {
-	var tabs = $('#tabsnav > li').find('#' + id + '');
+	var tabs = $('#tabsnav > li[id="' + id + '"]');
 	if (tabs.length == 0) { //创建
-		var htmlStr = '<li id="' + id + '"><a href="#' + id + '" data-toggle="tab">' + text + ' <i class="fa fa-times"></i></a></li>';
+		var htmlStr = '<li id="' + id + '"><a href="#tab' + id + '" data-toggle="tab">' + text + ' <i class="fa fa-times"></i></a></li>';
 		$('#tabsnav').append(htmlStr);
-		htmlStr = '<div class="tab-pane" id="' + id + '"></div>';
+		htmlStr = '<div class="tab-pane" id="tab' + id + '"></div>';
 		$('#tabcontext').append(htmlStr);
-	} else { //激活
-		
+		$('#tab' + id).load(href);
+	}
+	$('#tabsnav > li[id="' + id + '"] a').click();
+}
+function testICheck() {
+	var clicks = $(this).data('clicks');
+	if (clicks) {
+		$(".table input[type='checkbox']").iCheck("uncheck");
+		$(".fa", this).removeClass("fa-check-square-o").addClass('fa-square-o');
+	} else {
+		$(".table input[type='checkbox']").iCheck("check");
+		$(".fa", this).removeClass("fa-square-o").addClass('fa-check-square-o');
 	}
 }

@@ -1,5 +1,5 @@
 $(function() {
-	$('#menu').tree({
+	$('#sysmenu').tree({
 		url : basePath + '/sys/sysMenu',
 		loadFilter : function(data) {
 			return data;
@@ -10,7 +10,7 @@ $(function() {
 	});
 });
 function saveData() {
-	var menus = $('#menu').tree('getChecked');
+	var menus = $('#sysmenu').tree('getChecked');
 	var data = "";
 	for (var i = 0; i < menus.length; i++) {
 		var menu = menus[i];

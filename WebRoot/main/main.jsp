@@ -3,28 +3,35 @@
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/js/adminlte/bootstrap/css/bootstrap.min.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/js/adminlte/AdminLTE/css/AdminLTE.min.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/js/adminlte/AdminLTE/css/skins/skin-blue.min.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/js/adminlte/font-awesome/css/font-awesome.min.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/js/adminlte/Ionicons/css/ionicons.min.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/js/adminlte/jvectormap/jquery-jvectormap.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/js/adminlte/bootstrap-daterangepicker/daterangepicker.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/js/adminlte/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/js/adminlte/datatables.net-bs/css/dataTables.bootstrap.min.css">
-<link rel="syltesheet" href="${pageContext.request.contextPath}/js/adminlte/iCheck/flat/blue.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/js/adminlte/bootstrap/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/js/adminlte/font-awesome/css/font-awesome.min.css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/js/adminlte/Ionicons/css/ionicons.min.css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/js/adminlte/jvectormap/jquery-jvectormap.css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/js/adminlte/bootstrap-daterangepicker/daterangepicker.css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/js/adminlte/bootstrap-datepicker/css/bootstrap-datepicker.min.css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/js/adminlte/datatables.net-bs/css/dataTables.bootstrap.min.css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/js/adminlte/iCheck/flat/blue.css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/js/adminlte/select2/css/select2.min.css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/js/adminlte/bootstrap-timepicker.min.css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/js/adminlte/AdminLTE/css/AdminLTE.min.css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/js/adminlte/AdminLTE/css/skins/skin-blue.min.css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css"/>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/adminlte/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/adminlte/jquery-ui.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/adminlte/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/adminlte/AdminLTE/js/adminlte.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/adminlte/jquery-ui.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/adminlte/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/adminlte/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/adminlte/moment/moment.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/adminlte/bootstrap-daterangepicker/daterangepicker.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/adminlte/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/adminlte/bootstrap-datepicker/js/bootstrap-datepicker.zh-CN.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/adminlte/datatables.net/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/adminlte/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/adminlte/iCheck/icheck.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/adminlte/select2/js/select2.full.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/adminlte/select2/js/i18n/zh-CN.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/adminlte/bootstrap-timepicker.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/adminlte/AdminLTE/js/adminlte.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/adminlte/common.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/main/main.js"></script>
 <script type="text/javascript">

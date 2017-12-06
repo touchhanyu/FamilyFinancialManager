@@ -58,7 +58,7 @@ public class CommAction extends BaseAction {
 	 * @throws IOException
 	 */
 	public void dictQuery() throws IOException {
-		String sql = "select ID,DICTCODE,DICTVALUE from FFM_SYS_DICTIONARYDETAIL where DID=(select ID from FFM_SYS_DICTIONARY where DICTCODE='"
+		String sql = "select ID,DICTCODE,DICTVALUE,DICTVALUE TEXT from FFM_SYS_DICTIONARYDETAIL where DID=(select ID from FFM_SYS_DICTIONARY where DICTCODE='"
 				+ this.param + "') order by DORDER";
 		List<DictionaryDetail> list = SQLUtil.query(sql, DictionaryDetail.class);
 		Gson gson = new Gson();

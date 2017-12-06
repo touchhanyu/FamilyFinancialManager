@@ -19,6 +19,9 @@ public class DictionaryDetail {
 	/* 字典明细值 */
 	@Column("DICTVALUE")
 	private String dictValue;
+	/* 字典明细值 */
+	@Column("TEXT")
+	private String text;
 	/* 显示顺序 */
 	@Column("DORDER")
 	private String dOrder;
@@ -62,6 +65,14 @@ public class DictionaryDetail {
 
 	public void setDictValue(String dictValue) {
 		this.dictValue = dictValue;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
 	}
 
 	public String getdOrder() {

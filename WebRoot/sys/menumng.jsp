@@ -15,7 +15,7 @@
 	</head>
 	<body>
 		<div class="easyui-accordion" data-options="multiple:true">
-			<div id="menu" title="系统菜单管理" data-options="iconCls:'icon-edit',collapsed:false,collapsible:false" style="padding:5px;"></div>
+			<div id="sysmenu" title="系统菜单管理" data-options="iconCls:'icon-edit',collapsed:false,collapsible:false" style="padding:5px;"></div>
 			<div id="mm" class="easyui-menu" style="width:120px;">
 				<div onclick="addMenu(0);" data-options="iconCls:'icon-add'">添加同级菜单</div>
 				<div onclick="addMenu(1);" data-options="iconCls:'icon-add'">添加子菜单</div>

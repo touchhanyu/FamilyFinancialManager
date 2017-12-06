@@ -1,5 +1,5 @@
 $(function() {
-	$('#menu').tree({
+	$('#sysmenu').tree({
 		url : basePath + '/sys/sysMenu',
 		loadFilter : function(data) {
 			return data;
@@ -8,7 +8,7 @@ $(function() {
 		dnd : true,
 		onContextMenu : function(e, node) {
 			e.preventDefault();
-			$('#menu').tree('select', node.target);
+			$('#sysmenu').tree('select', node.target);
 			$('#mm').menu('show', {
 				left : e.pageX,
 				top : e.pageY
@@ -40,24 +40,24 @@ function addMenu(level) {
 	});
 }
 function editMenu() {
-	var node = $('#menu').tree('getSelected');
-	$('#menu').tree('beginEdit', node.target);
+	var node = $('#sysmenu').tree('getSelected');
+	$('#sysmenu').tree('beginEdit', node.target);
 }
 function removeMenu() {
-	var node = $('#menu').tree('getSelected');
-	$('#menu').tree('remove', node.target);
+	var node = $('#sysmenu').tree('getSelected');
+	$('#sysmenu').tree('remove', node.target);
 }
 function addMenuCallBack() {
-	var node = $('#menu').tree('getSelected');
+	var node = $('#sysmenu').tree('getSelected');
 	if (node) {
 		if (level == 0) {
-			$('#menu').tree('append', {
+			$('sysmenu').tree('append', {
 				data : [ {
 					text : ''
 				} ]
 			});
 		} else if (level == 1) {
-			$('#menu').tree('insert', {
+			$('#sysmenu').tree('insert', {
 				after : node.target,
 				data : {
 					text : ''

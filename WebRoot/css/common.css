@@ -38,3 +38,13 @@
 	padding: 5px;
 	width: 25%;
 }
+table .tbtools {
+  float: right;
+  color: #dd4b39;
+}
+table .tbtools > .fa,
+table .tbtools > .glyphicon,
+table .tbtools > .ion {
+  margin-right: 5px;
+  cursor: pointer;
+}

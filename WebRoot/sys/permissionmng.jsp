@@ -15,7 +15,7 @@
 	</head>
 	<body>
 		<div class="easyui-accordion" data-options="multiple:true">
-			<div id="menu" title="用户菜单权限管理" data-options="iconCls:'icon-edit',collapsed:false,collapsible:false" style="padding:5px;">
+			<div id="sysmenu" title="用户菜单权限管理" data-options="iconCls:'icon-edit',collapsed:false,collapsible:false" style="padding:5px;">
 			</div>
 		</div>
 		<div style="text-align:center;padding:5px">
